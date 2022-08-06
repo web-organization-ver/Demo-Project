@@ -3,7 +3,7 @@ import React from "react";
 const Showcard = ({ key, cadd, cname, ctid, cowner, cdesc, name, network }) => {
   return (
     <>
-      <h1>New NFT {key}:</h1>
+      <h1>New NFT</h1>
       <div>{cadd}</div>
       <div>{cname}</div>
       <div>{ctid}</div>
@@ -11,8 +11,8 @@ const Showcard = ({ key, cadd, cname, ctid, cowner, cdesc, name, network }) => {
       <div>{cdesc}</div>
       <div>{name}</div>
       <div>{network}</div>
-      <br/>
-      <br/>
+      <br />
+      <br />
     </>
   );
 };

@@ -1,27 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Showcard from "./Showcard";
+import Temp from "./Temp";
 
 const Nftdata = ({ nft }) => {
+  const [val, setval] = useState(0);
+
   useEffect(() => {
-    console.log(nft);
-    if (nft != null) {
-      console.log(nft[0].chain);
-      console.log(nft[0].collectionAddress);
-      console.log(nft[0].collectionName);
-      console.log(nft[0].collectionTokenId);
-      console.log(nft[0].currentOwner);
-      console.log(nft[0].description);
-      console.log(nft[0].imageUrl);
-      console.log(nft[0].name);
-      console.log(nft[0].network);
+    nft.map((onenft) => {
+      if (onenft.collectionName === "Raccoons") {
+        setval(val + 1);
+      }
+    });
+
+    console.log(val);
+    if (val !== 0) {
+      return <Temp />;
     }
-  }, [nft]);
+  }, []);
+
   return (
     <div>
       {nft.map((onenft, key) => {
+        if (onenft.collectionName === "Raccoons" && val === 0) {
+          return <Temp />;
+        }
         return (
           <Showcard
-            key={key}
+            key={onenft.collectionTokenId}
             cadd={onenft.collectionAddress}
             cname={onenft.collectionName}
             ctid={onenft.collectionTokenId}
