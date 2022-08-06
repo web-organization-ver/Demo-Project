@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cardwallet from "./cardwallet";
+import Success from "./Success";
 
 function App() {
   const [data, setdata] = useState({
@@ -13,7 +14,7 @@ function App() {
       {data.address === "" ? (
         <Cardwallet data={data} setdata={setdata} />
       ) : (
-        <>Hello</>
+        <Success data={data} />
       )}
     </div>
   );

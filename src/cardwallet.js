@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { ethers } from "ethers";
+import "./wallet.css"
 
 const cardwallet = ({ data, setdata }) => {
   const getbalance = (address) => {
