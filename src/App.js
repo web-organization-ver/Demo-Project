@@ -8,11 +8,12 @@ function App() {
     address: "",
     Balance: null,
   });
+  const [nft , setnft] = useState(null);
 
   return (
     <div className="App">
       {data.address === "" ? (
-        <Cardwallet data={data} setdata={setdata} />
+        <Cardwallet data={data} setdata={setdata} nft={nft} setnft={setnft} />
       ) : (
         <Success data={data} />
       )}
