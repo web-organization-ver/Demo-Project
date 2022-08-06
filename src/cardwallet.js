@@ -3,7 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import { ethers } from "ethers";
 import "./wallet.css";
 
-const cardwallet = ({ data, setdata, nft, setnft }) => {
+const Cardwallet = ({ data, setdata, nft, setnft }) => {
   const getbalance = (address) => {
     window.ethereum
       .request({
@@ -17,7 +17,7 @@ const cardwallet = ({ data, setdata, nft, setnft }) => {
       });
   };
 
-  const accountChangeHandler = (account) => {
+  const accountChangeHandler = async (account) => {
     // setdata({
     //   address: account,
     // });
@@ -25,33 +25,15 @@ const cardwallet = ({ data, setdata, nft, setnft }) => {
     setdata({
       address: "0x1c61461794df20b0Ed8C8D6424Fd7B312722181f",
     });
-
     getbalance(account);
-
-    // getNFT(account);
     let heads;
-
-    (async () => {
-      const provider = new ethers.providers.JsonRpcProvider(
-        "https://virulent-wispy-river.discover.quiknode.pro/83b5ac469c2960fc40964054f3903aa892a27e07/"
-      );
-      console.log("Step 1");
-      // provider.connection.headers = { "x-qn-api-version": 1 };
-      heads = await provider.send("qn_fetchNFTs", {
-        wallet: "0x1c61461794df20b0Ed8C8D6424Fd7B312722181f",
-      });
-      console.log("Step 2");
-      console.log(heads);
-      setnft(heads);
-      console.log(nft);
-    })();
-
-    console.log("Step 3");
-
-    setTimeout(() => {
-      console.log("2 " + nft);
-      console.log(heads);
-    }, 3000);
+    const provider = new ethers.providers.JsonRpcProvider(
+      "https://virulent-wispy-river.discover.quiknode.pro/83b5ac469c2960fc40964054f3903aa892a27e07/"
+    );
+    heads = await provider.send("qn_fetchNFTs", {
+      wallet: "0x1c61461794df20b0Ed8C8D6424Fd7B312722181f",
+    });
+    setnft(heads.assets);
   };
 
   const btnhandler = () => {
@@ -84,4 +66,4 @@ const cardwallet = ({ data, setdata, nft, setnft }) => {
   );
 };
 
-export default cardwallet;
+export default Cardwallet;
