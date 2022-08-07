@@ -2,28 +2,24 @@ import React, { useEffect, useState } from "react";
 import Showcard from "./Showcard";
 import Temp from "./Temp";
 
-const Nftdata = ({ nft }) => {
-  const [val, setval] = useState(0);
-
+const Nftdata = ({ nft, val, setval }) => {
   useEffect(() => {
-    nft.map((onenft) => {
-      if (onenft.collectionName === "Raccoons") {
-        setval(val + 1);
-      }
-    });
-
-    console.log(val);
-    if (val !== 0) {
-      return <Temp />;
+    if (val === 0) {
+      nft.map((onenft) => {
+        if (onenft.collectionName === "Raccoons" && val === 0) {
+          setval(1);
+        }
+        return val;
+      });
     }
+    console.log('====================================');
+    console.log(val);
+    console.log('====================================');
   }, []);
 
   return (
     <div>
       {nft.map((onenft, key) => {
-        if (onenft.collectionName === "Raccoons" && val === 0) {
-          return <Temp />;
-        }
         return (
           <Showcard
             key={onenft.collectionTokenId}
