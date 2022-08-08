@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from "react";
 
 const Telegram = () => {
-  return (
-    <div>Telegram</div>
-  )
-}
+  const [urlval, seturlval] = useState("https://t.me/+wvxTjfEV-TllZDQ1");
 
-export default Telegram
+  function remove() {
+    seturlval(urlval.slice(0, 14) + "etr5d3-TllZDQ1");
+  }
+  return (
+    <div>
+      <a href={urlval} onClick={() => remove()} target="_blank">Link</a>
+    </div>
+  );
+};
+
+export default Telegram;

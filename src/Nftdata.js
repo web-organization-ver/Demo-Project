@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Showcard from "./Showcard";
-import Temp from "./Temp";
 
 const Nftdata = ({ nft, val, setval }) => {
   useEffect(() => {
@@ -12,24 +11,20 @@ const Nftdata = ({ nft, val, setval }) => {
         return val;
       });
     }
-    console.log('====================================');
-    console.log(val);
-    console.log('====================================');
   }, []);
 
   return (
     <div>
-      {nft.map((onenft, key) => {
+      {nft.map((onenft, index) => {
         return (
           <Showcard
-            key={onenft.collectionTokenId}
-            cadd={onenft.collectionAddress}
-            cname={onenft.collectionName}
-            ctid={onenft.collectionTokenId}
-            cowner={onenft.currentOwner}
-            cdesc={onenft.description}
-            name={onenft.name}
-            network={onenft.network}
+          cadd={onenft.collectionAddress}
+          cname={onenft.collectionName}
+          ctid={onenft.collectionTokenId}
+          cowner={onenft.currentOwner}
+          cdesc={onenft.description}
+          name={onenft.name}
+          network={onenft.network}
           />
         );
       })}
