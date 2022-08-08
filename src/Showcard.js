@@ -1,6 +1,6 @@
 import React from "react";
 
-const Showcard = ({ key, cadd, cname, ctid, cowner, cdesc, name, network }) => {
+const Showcard = ({ cadd, cname, ctid, cowner, cdesc, name, network }) => {
   return (
     <>
       <h1>New NFT</h1>
